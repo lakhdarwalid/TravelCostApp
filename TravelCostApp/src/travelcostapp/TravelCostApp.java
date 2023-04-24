@@ -1,6 +1,10 @@
 package travelcostapp;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -28,6 +32,11 @@ public class TravelCostApp {
         static JTextField Result;
         static JButton Calculate;
         static JButton Clear;
+        
+        static JMenuBar menu;
+        static JMenuItem menuItem1;
+        static JMenuItem menuItem2;
+        
    
     public static void main(String[] args) {
          
@@ -126,6 +135,19 @@ public class TravelCostApp {
         panel.add(Clear);
         
         frame.add(panel);
+        
+        menu  = new JMenuBar();
+        menu.setLayout(new BorderLayout());
+       
+        menuItem1 = new JMenuItem("Caluclate");
+        menuItem1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        menuItem1.addActionListener(new CalculateCostListener());
+        menuItem2 = new JMenuItem("Clear");
+        menuItem2.setLocation(100, 0);
+        menuItem2.addActionListener(new ClearFileds());
+        menu.add(menuItem1, BorderLayout.WEST);
+        menu.add(menuItem2, BorderLayout.EAST);
+        frame.setJMenuBar(menu);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLocation(500, 200);
